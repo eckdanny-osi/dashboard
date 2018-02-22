@@ -27,7 +27,7 @@ RUN bundle install
 # compile assets
 RUN bash -c "RAILS_ENV=production rails assets:precompile"
 
-COPY ./public/assets /dashboard/assets
+RUN cp -ar ./public/assets /dashboard/assets
 
 VOLUME /dashboard
 

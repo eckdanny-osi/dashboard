@@ -35,6 +35,9 @@ gem 'cwds-authentication', github: 'ca-cwds/cwds-authentication', :ref => "82c1d
 
 gem 'newrelic_rpm'
 
+# Use webpacker for modern javascript development
+gem 'webpacker', '~> 3.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

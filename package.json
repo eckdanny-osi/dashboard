@@ -11,6 +11,7 @@
     "react-wood-duck": "^0.1.51"
   },
   "devDependencies": {
+    "prettier": "^1.11.1",
     "webpack-cli": "^2.0.10",
     "webpack-dev-server": "^2.11.1"
   }

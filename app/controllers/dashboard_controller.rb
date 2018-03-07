@@ -1,5 +1,8 @@
 class DashboardController < SandboxBaseController
   def index
+
+    @content = YAML.load_file('config/content.yml')
+
     @snapshot_url = ENV['SNAPSHOT_URL'] || ENV['INTAKE_URL'] || false
     @hotline_url = ENV['HOTLINE_URL'] || false
     @facility_url = ENV['FACILITY_URL'] || false

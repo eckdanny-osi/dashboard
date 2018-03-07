@@ -1,0 +1,31 @@
+services:
+  - name: Snapshot
+    roles:
+    summary: >
+      There once was a man short man from Ealing
+  - name: Hotline
+    roles:
+    summary: >
+      There once was a man short man from Ealing
+  - name: CALS (Facilities)
+    roles:
+    summary: >
+      There once was a man short man from Ealing
+  - name: CALS (RFA)
+    roles:
+    summary: >
+      There once was a man short man from Ealing
+  - name: Case Management
+    roles:
+    summary: >
+      There once was a man short man from Ealing
+
+resources:
+  - name: CWS-CARES Training On-Demand
+    summary: >
+      Job aids, demo videos and other training tools are available for staff to learn CWS-CARES at their own pace.
+    href: https://cwscms.osi.ca.gov/Portal/Digital-Services-Implementation-Portal/Training?folderId=1957
+  - name: Release Notes
+    summary: >
+      Visit Github to see a log of new features, improvements and bug fixes organized by their release dates.
+    href: https://github.com/ca-cwds/Sandbox/blob/master/Release%20Notes/release_notes.md

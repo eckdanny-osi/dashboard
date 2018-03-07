@@ -1,3 +1,5 @@
-<div id="root">
+<%= content_tag :div,
+  id: "root",
+  data: @content.to_json do %>
   <%= javascript_pack_tag 'dashboard' %>
-</div>
+<% end %>

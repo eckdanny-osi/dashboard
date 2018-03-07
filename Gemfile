@@ -31,12 +31,17 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'cwds-authentication', github: 'ca-cwds/cwds-authentication', :ref => "82c1dcf"
+# gem 'cwds-authentication', github: 'ca-cwds/cwds-authentication', :ref => "90233fd"
+gem 'cwds-authentication', github: 'eckdanny-osi/cwds-authentication', :ref => '4141996'
 
 gem 'newrelic_rpm'
 
 # Use webpacker for modern javascript development
 gem 'webpacker', '~> 3.2'
+
+# THIS SHOULD BE HOISTED INTO CWDS::Auth
+# gem 'faraday', '~> 0.13.1'
+# gem 'faraday_middleware', '~> 0.12.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

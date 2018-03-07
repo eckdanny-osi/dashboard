@@ -13,7 +13,7 @@ services:
       href: https://web.preint.cwds.io/intake
   - name: Hotline
     id: hotline
-    enabled: false
+    enabled: true
     roles: []
     summary: >
       Create child abuse screenings by entering pertinent information/allegations; searching for child welfare history; and determining the level of risk of abuse and/or neglect for assignment.

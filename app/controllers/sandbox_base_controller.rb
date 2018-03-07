@@ -7,7 +7,6 @@ class SandboxBaseController < ApplicationController
 
     token = Cwds::Authentication.token_generation(params[:accessCode], ENV['AUTHENTICATION_API_BASE_URL'])
 
-    puts "the token: #{token}"
     puts "beofre - session token #{session[:token]}"
 
     if token
@@ -24,6 +23,9 @@ class SandboxBaseController < ApplicationController
     if Cwds::Authentication.token_validation(new_token, ENV['AUTHENTICATION_API_BASE_URL'])
       puts "token validated success #{new_token}"
       session[:token] = new_token
+
+      profile = Cwds::Authentication.store_user_details_from_token(new_token, ENV['AUTHENTICATION_API_BASE_URL'])
+      session[:profile] = profile
 
       puts "will redirect to - #{url_for(request.params.except(:token))}"
       # redirect to request URL without token in querystring

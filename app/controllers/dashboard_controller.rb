@@ -1,14 +1,24 @@
 class DashboardController < SandboxBaseController
   def index
 
-    tmpl = ERB.new File.new('config/content.yml').read
-    data = YAML.load tmpl.result(binding)
-
+    data = YAML::load_file('config/content.yml')
     enabled = -> hash { hash['enabled'] }
 
+    profile = session[:profile]
+    # TODO: filter services by profile (roles?)
+
     @content = {
-      :resources => data['resources'].select(&enabled),
-      :services => data['services'].select(&enabled)
+      :resources => data['resources']
+        .select(&enabled),
+      :services => data['services']
+        .select(&enabled)
+        .map do |hash|
+          service_id = hash['id']
+          url = ENV["#{service_id.upcase}_URL"] || false
+          binding.pry
+          hash['link']['href'] = url if url
+          hash
+        end,
     }
 
     @snapshot_url = ENV['SNAPSHOT_URL'] || ENV['INTAKE_URL'] || false

@@ -1,7 +1,15 @@
 class DashboardController < SandboxBaseController
   def index
 
-    @content = YAML.load_file('config/content.yml')
+    tmpl = ERB.new File.new('config/content.yml').read
+    data = YAML.load tmpl.result(binding)
+
+    enabled = -> hash { hash['enabled'] }
+
+    @content = {
+      :resources => data['resources'].select(&enabled),
+      :services => data['services'].select(&enabled)
+    }
 
     @snapshot_url = ENV['SNAPSHOT_URL'] || ENV['INTAKE_URL'] || false
     @hotline_url = ENV['HOTLINE_URL'] || false

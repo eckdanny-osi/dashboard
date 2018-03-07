@@ -1,31 +1,70 @@
+# alskdfj
+
+#
 services:
   - name: Snapshot
-    roles:
+    id: snapshot
+    enabled: true
+    roles: []
     summary: >
-      There once was a man short man from Ealing
+      Search for people and their past child welfare history by using the Child Welfare History Snapshot tool.
+    link:
+      text: Child Welfare History Snapshot Tool
+      href: https://web.preint.cwds.io/intake
   - name: Hotline
-    roles:
+    id: hotline
+    enabled: false
+    roles: []
     summary: >
-      There once was a man short man from Ealing
+      Create child abuse screenings by entering pertinent information/allegations; searching for child welfare history; and determining the level of risk of abuse and/or neglect for assignment.
+    link:
+      text: Hotline Screener Tool
+      href: https://web.preint.cwds.io/intake
   - name: CALS (Facilities)
-    roles:
+    id: facilities
+    enabled: true
+    roles: []
     summary: >
-      There once was a man short man from Ealing
+      Search CWS/CMS, LIS and FAS data for Facilities, Children associated to facilities and Facility Complaint History.
+    link:
+      text: Facility and Home Search and Profile
+      href: https://web.preint.cwds.io/cals
   - name: CALS (RFA)
-    roles:
+    id: rfa
+    enabled: true
+    roles: []
     summary: >
-      There once was a man short man from Ealing
+      View and create RFA applications for potential applicants looking to provide safe homes for children.
+    link:
+      text: Resource Family Application
+      href: https://web.preint.cwds.io/cals
   - name: Case Management
-    roles:
+    id: case-management
+    enabled: false
+    roles: []
     summary: >
       There once was a man short man from Ealing
+    link:
+      text: Case Management
+      href: https://web.preint.cwds.io/cals
 
+# asldkfjas
 resources:
-  - name: CWS-CARES Training On-Demand
+  - name: Training
+    id: training
+    enabled: true
+    roles: []
     summary: >
       Job aids, demo videos and other training tools are available for staff to learn CWS-CARES at their own pace.
-    href: https://cwscms.osi.ca.gov/Portal/Digital-Services-Implementation-Portal/Training?folderId=1957
+    link:
+      text: Training
+      href: https://cwscms.osi.ca.gov/Portal/Digital-Services-Implementation-Portal/Training?folderId=1957
   - name: Release Notes
+    id: release-notes
+    enabled: true
+    roles: []
     summary: >
       Visit Github to see a log of new features, improvements and bug fixes organized by their release dates.
-    href: https://github.com/ca-cwds/Sandbox/blob/master/Release%20Notes/release_notes.md
+    link:
+      text: Release Notes
+      href: https://github.com/ca-cwds/Sandbox/blob/master/Release%20Notes/release_notes.md

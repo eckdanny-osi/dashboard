@@ -7,6 +7,7 @@ class SandboxBaseController < ApplicationController
 
     token = Cwds::Authentication.token_generation(params[:accessCode], ENV['AUTHENTICATION_API_BASE_URL'])
 
+    puts "the token: #{token}"
     puts "beofre - session token #{session[:token]}"
 
     if token

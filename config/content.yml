@@ -21,7 +21,7 @@ services:
       text: Hotline Screener Tool
       href: https://web.preint.cwds.io/intake
   - name: CALS (Facilities)
-    id: facilities
+    id: facility
     enabled: true
     roles: []
     summary: >
@@ -30,7 +30,7 @@ services:
       text: Facility and Home Search and Profile
       href: https://web.preint.cwds.io/cals
   - name: CALS (RFA)
-    id: rfa
+    id: cals
     enabled: true
     roles: []
     summary: >
@@ -39,7 +39,7 @@ services:
       text: Resource Family Application
       href: https://web.preint.cwds.io/cals
   - name: Case Management
-    id: case-management
+    id: case_management
     enabled: false
     roles: []
     summary: >
@@ -51,20 +51,20 @@ services:
 # asldkfjas
 resources:
   - name: Training
-    id: training
+    id: job_aids
     enabled: true
     roles: []
     summary: >
       Job aids, demo videos and other training tools are available for staff to learn CWS-CARES at their own pace.
     link:
       text: Training
-      href: https://cwscms.osi.ca.gov/Portal/Digital-Services-Implementation-Portal/Training?folderId=1957
+      href: training
   - name: Release Notes
-    id: release-notes
+    id: release_notes
     enabled: true
     roles: []
     summary: >
       Visit Github to see a log of new features, improvements and bug fixes organized by their release dates.
     link:
       text: Release Notes
-      href: https://github.com/ca-cwds/Sandbox/blob/master/Release%20Notes/release_notes.md
+      href: release_notes

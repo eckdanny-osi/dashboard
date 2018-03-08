@@ -1,5 +1,74 @@
-# sandbox-landing
-Sandbox landing page application 
+# Dashboard
+
+The program's landing page.
+
+## QuickStart
+
+clone this repository:
+
+```sh
+git clone https://github.com/ca-cwds/dashboard.git && cd $_
+```
+
+spin up the app and backing services with `docker-compose`:
+
+```sh
+docker-compose up
+```
+
+and open http://localhost:8888.
+
+## About
+
+The `dashboard` application is a simple enterprise-style portal home page. It's purpose is to:
+
+ - authenticate inbound users
+ - provide navigable links to <abbr title="California Automated Response and Engagement System">CARES</abbr> functional modules
+
+ > _NOTE: A more enlightened, user-centric implementation (as opposed to this systems-first approach)  has been proposed and has traction with stakeholders and product personnel. That vision WILL one day come to fruition! But until the time is right to prioritize that effort, the ~~ugly~~ "cute" baby will stand._
+
+## Content
+
+The body/copy in the `dashboard` application is defined in `config/content.yml`. Though _content_ typically lives in a CMS or database, in order to keep the maintenance overhead low and cycle times short, a flat file will suffice.
+
+Content "updates" can be performed quickly and easily by simply editing this file.
+
+### Structure
+
+The structure of `content.yml` has two sections: `services` and `resources`.
+
+```typescript
+// Services
+service {
+  name: String;
+  id: String;
+  enabled: Boolean;
+  roles: Array<String>;
+  summary: String;
+  link: {
+    text?: String;
+    href?: String;
+  }
+}
+```
+
+## Environmental Variables
+
+asdfasdf
+
+### with `dot-env`
+
+asdfsadf
+
+### with `docker`
+
+asdlfkasdf
+
+### Content
+
+CMS
+
+### Maintenance
 
 
 ### Enviornment Variables

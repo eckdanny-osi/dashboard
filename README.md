@@ -22,10 +22,10 @@ and open http://localhost:8888.
 
 The `dashboard` application is a simple enterprise-style portal home page. It's purpose is to:
 
- - authenticate inbound users
- - provide navigable links to <abbr title="California Automated Response and Engagement System">CARES</abbr> functional modules
+* authenticate inbound users
+* provide navigable links to <abbr title="California Automated Response and Engagement System">CARES</abbr> functional modules
 
- > _NOTE: A more enlightened, user-centric implementation (as opposed to this systems-first approach)  has been proposed and has traction with stakeholders and product personnel. That vision WILL one day come to fruition! But until the time is right to prioritize that effort, the ~~ugly~~ "cute" baby will stand._
+> _NOTE: A more enlightened, user-centric implementation (as opposed to this systems-first approach) has been proposed and has traction with stakeholders and product personnel. That vision WILL one day come to fruition! But until the time is right to prioritize that effort, the ~~ugly~~ "cute" baby will stand._
 
 ## Content
 
@@ -33,17 +33,16 @@ The body/copy in the `dashboard` application is defined in `config/content.yml`.
 
 Content "updates" can be performed quickly and easily by simply editing this file.
 
-### Structure
-
 The structure of `content.yml` has two sections: `services` and `resources`.
 
+Both adhere to the following structural interface:
+
 ```typescript
-// Services
-service {
+{
   name: String;
   id: String;
   enabled: Boolean;
-  roles: Array<String>;
+  roles?: Array<String>;
   summary: String;
   link: {
     text?: String;
@@ -52,36 +51,61 @@ service {
 }
 ```
 
+The `link#href` property may overridden by ENV var values on the `id` key to improve portability.
+
+For example, given a `service` in `config.yaml` like:
+
+```yaml
+  - name: My Super Awesome App
+    id: awesome
+    enabled: true
+    summary: The greatest app ever built by man.
+    link:
+      href: https://awesome-app.com
+```
+
+When you provide an env var `AWESOME_URL=https://meh.io`, dashboard will substitute values for `link.href` on `id`. (Use under_case for `id`)
+
 ## Environmental Variables
 
-asdfasdf
+The following collaborating service endpoint values are **requried**:
 
-### with `dot-env`
+```sh
+LOGIN_BASE_URL: server URL
+PERRY_BASE_URL: server URL
 
-asdfsadf
+REDIS_HOST: hostname
+REDIS_PORT: port number
+```
 
-### with `docker`
+where `server URL` is defined by:
 
-asdlfkasdf
+```
+https://api.example.com/v1/users?role=admin&status=active
+\________________________/\____/ \______________________/
+       server URL        endpoint    query parameters
+```
 
-### Content
+> _NOTE: `LOGIN_BASE_URL` and `PERRY_BASE_URL` be the same values, but they are treated as two seperate entities. This is to de-couple the front-end login url from the service endpoint for api calls._
 
-CMS
+Service and Resource url overrides are optional and use the following naming convention
 
-### Maintenance
+<NAME>\_URL: url (full, absolute or relative path)
 
+All of the typical `rails` or `ruby` env vars should be applicable as this image inherits from the base ruby image.
 
-### Enviornment Variables
-| Environment Variable | Description                                             | Default Value |
-| ------------------   | ------------------------------------------------------- | ------------- |
-| INTAKE_URL    | URL for Snapshot application Deprecated | nil |
-| SNAPSHOT_URL    | URL for Snapshot application Replaces INTAKE_URL. If SNAPSHOT_URL not set then INTAKE_URL will be used | nil |
-| HOTLINE_URL    | URL for Hotline application | nil |
-| FACILITY_URL    | URL for Facility and Home search and Profile application | nil |
-| CALS_URL | URL for CALS application | nil |
-| RELEASE_NOTES_URL | URL for release notes | https://github.com/ca-cwds/Sandbox/blob/master/Release%20Notes/release_notes.md |
-| JOB_AIDS_URL | URL for Job Aids | https://cwscms.osi.ca.gov/Portal/Digital-Services-Implementation-Portal/Training?folderId=1957 |
-| AUTHENTICATION_API_BASE_URL | Base URL for authentication api (e.g. http://perry.dev.cwds.tabordasolutions.net) | nil |
+### Variable Management
 
+The included `.env` file is intended to serve both the dev-local and docker use case:
 
-https://github.com/rails/webpacker/issues/1303
+#### with `dot-env`
+
+This project is built with [`webpacker`](https://github.com/rails) Consult the [usage docs](https://github.com/rails/webpacker#usage) as needed.
+
+#### with `docker`
+
+Check the [Environment variables in Compose](https://docs.docker.com/compose/environment-variables/) from Docker.
+
+## TODOs
+
+* https://github.com/rails/webpacker/issues/1303

@@ -25,7 +25,7 @@ The `dashboard` application is a simple enterprise-style portal home page. It's 
 * authenticate inbound users
 * provide navigable links to <abbr title="California Automated Response and Engagement System">CARES</abbr> functional modules
 
-> _NOTE: A more enlightened, user-centric implementation (as opposed to this systems-first approach) has been proposed and has traction with stakeholders and product personnel. That vision WILL one day come to fruition! But until the time is right to prioritize that effort, the ~~ugly~~ "cute" baby will stand._
+> NOTE: A more enlightened, user-centric implementation (as opposed to this systems-first approach) has been proposed and has traction with stakeholders and product personnel. That vision WILL one day come to fruition! But until the time is right to prioritize that effort, the ~~ugly~~ "cute" baby will stand.
 
 ## Content
 
@@ -86,7 +86,7 @@ https://api.example.com/v1/users?role=admin&status=active
        server URL        endpoint    query parameters
 ```
 
-> _NOTE: `LOGIN_BASE_URL` and `PERRY_BASE_URL` be the same values, but they are treated as two seperate entities. This is to de-couple the front-end login url from the service endpoint for api calls._
+> NOTE: `LOGIN_BASE_URL` and `PERRY_BASE_URL` _may_ be the same values, but they are treated as two seperate entities. This is to de-couple the front-end login url from the service endpoint for api calls.
 
 Service and Resource url overrides are optional and use the following naming convention
 

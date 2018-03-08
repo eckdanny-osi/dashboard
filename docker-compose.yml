@@ -14,10 +14,12 @@ services:
     build: .
     ports:
       - "8888:3000"
+    env_file:
+      - ./.env
     environment:
-      RAILS_ENV: development
-      SKIP_CHECK_YARN_INTEGRITY: 1 # ugg! stupid asset:precompile task clobbers dev deps!
+      # RAILS_ENV: development
+      # SKIP_CHECK_YARN_INTEGRITY: 1 # ugg! stupid asset:precompile task clobbers dev deps!
+      LOGIN_BASE_URL: http://localhost:8889/perry # ugg! path segment '/authn/login' is hardcoded in cwds-auth gem
+      PERRY_BASE_URL: http://perry:8080/perry
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      PERRY_BASE_URL: http://perry:8080/perry
-      LOGIN_BASE_URL: http://localhost:8889/perry # ugg! path segment '/authn/login' is hardcoded in cwds-auth gem

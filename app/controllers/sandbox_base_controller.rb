@@ -5,7 +5,7 @@ class SandboxBaseController < ApplicationController
 
   def authenticate_with_cwds
 
-    token = Cwds::Authentication.token_generation(params[:accessCode], 'http://perry:8080/perry')
+    token = Cwds::Authentication.token_generation(params[:accessCode], ENV.fetch('PERRY_URL'))
 
     puts "beofre - session token #{session[:token]}"
 
@@ -20,11 +20,11 @@ class SandboxBaseController < ApplicationController
     # If no new token and current token exists, continue as normal
     return if session[:token]
 
-    if Cwds::Authentication.token_validation(new_token, 'http://perry:8080/perry')
+    if Cwds::Authentication.token_validation(new_token, ENV.fetch('PERRY_URL'))
       puts "token validated success #{new_token}"
       session[:token] = new_token
 
-      profile = Cwds::Authentication.store_user_details_from_token(new_token, 'http://perry:8080/perry')
+      profile = Cwds::Authentication.store_user_details_from_token(new_token, ENV.fetch('PERRY_URL'))
       session[:profile] = profile
 
       puts "will redirect to - #{url_for(request.params.except(:token))}"

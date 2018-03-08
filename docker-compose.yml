@@ -1,11 +1,5 @@
-version: '3'
+version: '3.5'
 services:
-  dashboard:
-    build: .
-    ports:
-      - "8888:3000"
-    environment:
-      - LOGIN_URL=http://localhost:8889/perry # ugg! path is hardcoded in cwds-auth gem
   redis:
     image: 'redis:3.0'
   perry:
@@ -14,3 +8,16 @@ services:
       - "8889:8080"
     environment:
       - DEV_MODE=true
+  dashboard:
+    depends_on:
+      - redis
+    build: .
+    ports:
+      - "8888:3000"
+    environment:
+      RAILS_ENV: development
+      SKIP_CHECK_YARN_INTEGRITY: 1 # ugg! stupid asset:precompile task clobbers dev deps!
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      PERRY_BASE_URL: http://perry:8080/perry
+      LOGIN_BASE_URL: http://localhost:8889/perry # ugg! path segment '/authn/login' is hardcoded in cwds-auth gem

@@ -10,7 +10,7 @@ WORKDIR /dashboard
 ADD Gemfile Gemfile.lock /dashboard/
 RUN bundle install --jobs 20 --retry 5
 ADD package.json yarn.lock /dashboard/
-RUN yarn install --production=false --non-interactive --frozen-lockfile
+RUN yarn install --non-interactive --frozen-lockfile
 ADD . /dashboard
 RUN NODE_ENV=production RAILS_ENV=production bundle exec rails assets:precompile
 EXPOSE 3000

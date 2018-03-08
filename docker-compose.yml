@@ -1,16 +1,16 @@
-version: '2.1'
-# 6/23/2017 - version 3.x does not support extends yet.
-# - https://docs.docker.com/compose/extends/#extending-services
+version: '3'
 services:
   dashboard:
     build: .
     ports:
-      - "3333:3000"
+      - "8888:3000"
     environment:
-      AUTHENTICATION_API_BASE_URL: "https://web.preint02.cwds.io/perry"
-    volumes:
-      - .:/var/www/dashboard
-    tty: true
-    stdin_open: true
+      - LOGIN_URL=http://localhost:8889/perry # ugg! path is hardcoded in cwds-auth gem
   redis:
     image: 'redis:3.0'
+  perry:
+    image: cwds/perry
+    ports:
+      - "8889:8080"
+    environment:
+      - DEV_MODE=true
